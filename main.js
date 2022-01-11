@@ -35,7 +35,7 @@ if(results.length > 0){
     console.log(results);
     noseX= results[0].pose.nose.x;
     noseY= results[0].pose.nose.y;
-    leftWrist= results[0].pose.leftWrist.x;
+    leftWristX= results[0].pose.leftWrist.x;
     rightWristX= results[0].pose.rightWrist.x;
     difference= floor(leftWristX - rightWristX);
     document.getElementById("sides").innerHTML= "The size of the the text is" + difference; 
