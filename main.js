@@ -4,6 +4,8 @@ function setup(){
         video= createCapture(VIDEO);
         video.size(500, 600);
         video.position(45, 225);
+        poseNet= ml5.poseNet(video, modelLoaded);
+        poseNet.on('pose', gotResult);
 }
 
 function draw(){
@@ -20,9 +22,8 @@ difference= 0;
 
 function draw(){
     background('#34a1eb');
-    fill('#e8431e');
-    stroke('#e8431e');
-    square(noseX, noseY, difference);
+    text('Soham!', noseX, noseY);
+    textSize(difference);
 }
 
 function modelLoaded(){
@@ -37,7 +38,7 @@ if(results.length > 0){
     leftWrist= results[0].pose.leftWrist.x;
     rightWristX= results[0].pose.rightWrist.x;
     difference= floor(leftWristX - rightWristX);
-    document.getElementById("sides").innerHTML= "The length of each side of the square is " + difference; 
+    document.getElementById("sides").innerHTML= "The size of the the text is" + difference; 
     console.log(leftWristX , rightWristX);
 
     
